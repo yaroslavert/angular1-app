@@ -1,0 +1,20 @@
+<div class="padding-big">
+    <form name="createAlbum">
+        <div class="form-group">
+            <label>Name Album <span class="text-danger" ng-if="createAlbum.name.$dirty && createAlbum.name.$error.required">Should not be empty</span></label>
+            <input type="text" class="form-control" name="name" ng-model="album.name" required>
+        </div>
+        <div class="form-group">
+            <label>Title <span class="text-danger" ng-if="createAlbum.title.$dirty && createAlbum.title.$error.required">Should not be empty</span></label>
+            <input type="text" class="form-control" name="title" ng-model="album.title" required>
+        </div>
+        <div class="form-group">
+            <label>Description <span class="text-danger" ng-if="createAlbum.description.$dirty && createAlbum.description.$error.required">Should not be empty</span></label>
+            <textarea type="text" class="form-control form-control-tx" name="description" ng-model="album.description" required></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger" ng-disabled="createAlbum.$invalid" ng-click="create()">Create</button>
+            <button type="submit" class="btn btn-info" ng-click="close()">Cancel</button>
+        </div>
+    </form>
+</div>

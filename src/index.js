@@ -1,25 +1,28 @@
 import angular from 'angular';
-import 'todomvc-app-css/index.css';
+import 'angular-toastr/dist/angular-toastr.tpls.js';
+import 'angular-toastr/dist/angular-toastr.min.css';
+import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js';
+import 'angular-ui-bootstrap/dist/ui-bootstrap-csp.css';
+import {YoutubeService} from './app/services/youtube';
+import {AlbumService} from './app/services/albums';
 
-import {TodoService} from './app/todos/todos';
-import {App} from './app/containers/App';
-import {Header} from './app/components/Header';
-import {MainSection} from './app/components/MainSection';
-import {TodoTextInput} from './app/components/TodoTextInput';
-import {TodoItem} from './app/components/TodoItem';
-import {Footer} from './app/components/Footer';
+import {Dashboard} from './app/components/dashboard';
+import {Album} from './app/components/album';
 import 'angular-ui-router';
-import routesConfig from './routes';
 
+import {equalHeights} from './app/directives/EqualHeights';
+
+import routesConfig from './routes';
 import './index.scss';
 
 angular
-  .module('app', ['ui.router'])
+  .module('app', ['ui.router', 'toastr', 'ui.bootstrap'])
   .config(routesConfig)
-  .service('todoService', TodoService)
-  .component('app', App)
-  .component('headerComponent', Header)
-  .component('footerComponent', Footer)
-  .component('mainSection', MainSection)
-  .component('todoTextInput', TodoTextInput)
-  .component('todoItem', TodoItem);
+  .run(($rootScope) => {
+    $rootScope.progress = true;
+  })
+  .service('youtubeService', YoutubeService)
+  .service('albumService', AlbumService)
+  .component('dashboardComponent', Dashboard)
+  .component('album', Album)
+  .directive('equalHeights', equalHeights)

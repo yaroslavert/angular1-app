@@ -1,0 +1,17 @@
+<div class="row buffer-top" equal-heights math-class="list-group-item">
+  <div class="col-sm-6 col-md-4" ng-repeat="item in $ctrl.albumList">
+      <div class="list-group">
+          <a ui-sref="album({ id: item.id })" class="list-group-item">
+            <h4 class="list-group-item-heading">{{item.title}}</h4>
+            <p class="list-group-item-text list-group-item-text-sm">{{item.description}}</p>
+          </a>
+      </div>
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-info" ng-click="$ctrl.createAlbum()">Create New Album</button>
+      </div>
+    </div>
+  </div>
+</div>

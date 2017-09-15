@@ -6,8 +6,22 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
+    .state('dashboard', {
       url: '/',
-      component: 'app'
-    });
+      component: 'dashboardComponent'
+    })
+    .state('test', {
+      url: '/test',
+      component: 'album'
+    })
+    .state('album', {
+      url: '/album/:id',
+      component: 'album',
+      resolve: {
+        album: function($stateParams, albumService) {
+          return albumService.getAlbum($stateParams.id);
+        }
+      }
+      
+    })
 }

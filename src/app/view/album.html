@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1>{{$ctrl.album.name}}</h1>
+            <h3>{{$ctrl.album.title}}</h3>
+            <p>{{$ctrl.album.description}}</p>
+            <p><a ui-sref="dashboard" class="btn btn-primary btn-lg" role="button">Dashboard</a></p>
+        </div>
+    </div>
+    <div class="col-md-12" equal-heights math-class="thumbnail">
+        <div class="col-sm-6 col-md-3" ng-repeat="item in $ctrl.album.movies track by $index">
+            <div class="thumbnail thumbnail-flex">
+                <img class="full-img" ng-src="{{item.thumbnailUrl}}">
+                
+                <div class="caption">
+                    <h3>{{item.title}}</h3>
+                    <p class="word-breack-all list-group-item-text-sm">{{item.description}}</p>
+                    <p>
+                        <a href="https://www.youtube.com/watch?v={{item.id}}" class="btn btn-default" role="button" target="blank">Watch</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="text-center buffer-bottom">
+            <div class="btn btn-info" ng-click="$ctrl.addVideo()">Add New Video</div>
+        </div>
+    </div>
+    
+</div>
